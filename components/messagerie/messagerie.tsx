@@ -174,18 +174,18 @@ export function Messagerie() {
 
   return (
     <div className="w-full">
-      <div className=" mx-10">
-        <div className="flex justify-between items-center w-full">
-          <DashboardTitle title="Messagerie" />
+      <div className="mt-10 flex justify-between">
+        <div className="flex justify-between w-full">
+          <DashboardTitle title="Messagerie" className="text-center"/>
           <Input
             placeholder="Rechercher par email ou numéro de téléphone..."
             value={globalFilter}
-            onChange={(event) => setGlobalFilter(event.target.value)} // Mettre à jour le filtre global
-            className="max-w-sm"
+            onChange={(event) => setGlobalFilter(event.target.value)} 
+            className="max-w-sm mr-10"
           />
         </div>
       </div>
-      <div className="rounded-md border p-10 mx-10">
+      <div className="rounded-md border p-4 mx-10">
         <Table>
           <TableHeader className="text-xl border-b-1">
             {table.getHeaderGroups().map((headerGroup) => (
