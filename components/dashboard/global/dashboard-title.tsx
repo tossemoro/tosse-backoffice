@@ -8,9 +8,9 @@ interface Props {
 
 export function DashboardTitle({ title, className }: Props) {
     return (
-        <TypographyH4 className={cn("text-2xl sm:text-4xl lg:text-6xl font-semibold leading-[2rem] sm:leading-[3rem] text-black mb-[2rem]", className)}>
+        <TypographyH4 className={cn("sm:text-4xl mx-10 lg:text-6xl font-semibold leading-[2rem] sm:leading-[3rem mb-[2rem]", className)}>
             {title || 'Dashboard titre'}
-            <div className="bg-primary h-1.5 w-[5rem] mx-auto md:mx-0 my-4"></div>
+            <div className="bg-[#FF9D00] h-1.5 w-[5rem] my-4"></div>
         </TypographyH4>
     )
 }
