@@ -1,8 +1,9 @@
+import { ThemeProvider } from "next-themes";
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
-import { Header, Sidebar, Footer } from "@/components/dashboard/global"
-
+import { Sidebar, Footer } from "@/components/dashboard/global";
+import Header from "@/components/dashboard/global/header";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -22,19 +23,29 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased flex flex-col min-h-screen`}
       >
-        <Header />
-        <Sidebar />
-        {children}
-        <Footer />
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <Header />
+          <div className="flex flex-1">
+            <Sidebar />
+            <main className="flex-1">{children}</main>
+          </div>
+          <Footer />
+        </ThemeProvider>
       </body>
     </html>
   );
 }
+
