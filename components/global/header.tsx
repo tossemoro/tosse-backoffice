@@ -11,21 +11,17 @@ import {
 } from "@/components/ui/select";
 import { useTheme } from "next-themes";
 import { FC } from "react";
+import { AppContainer } from "./app-container";
 
-type HeaderProps = {
-    isDarkMode?: boolean;
-};
-
-export const Header: FC<HeaderProps> = ({ isDarkMode }) => {
+export const Header: FC = () => {
     const { theme, setTheme } = useTheme();
 
     return (
         <header
-            className={`border-b-2 text-[1rem] py-3 ${isDarkMode ? "bg-gray-800 text-white" : ""
-                }`}
+            className={`border-b-2 py-3 `}
         >
-            <div className="flex justify-between items-center sm:mx-44">
-                <Link href="/" className="text-[2rem] uppercase">
+            <AppContainer className="flex justify-between items-center">
+                <Link href="/" className="text-2xl uppercase">
                     Tossé
                 </Link>
                 <div className="flex items-center gap-2">
@@ -55,7 +51,7 @@ export const Header: FC<HeaderProps> = ({ isDarkMode }) => {
                         <Switch id="airplane-mode"  onClick={() => setTheme(theme === "dark" ? "light" : "dark")}/>
                     </div>
                 </div>
-            </div>
+            </AppContainer>
         </header>
     );
 };
