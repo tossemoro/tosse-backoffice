@@ -3,12 +3,6 @@ import { PanelLeft, User } from "lucide-react";
 import { Switch } from "@/components/ui/switch";
 import * as React from "react";
 import Link from "next/link";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-} from "@/components/ui/select";
 import { useTheme } from "next-themes";
 import { FC } from "react";
 import { AppContainer } from "./app-container";
@@ -24,27 +18,11 @@ export const Header: FC = () => {
           Tossé
         </Link>
         <div className="flex items-center gap-2">
-          <Select>
-            <SelectTrigger className="hover:bg-primary">
-              <User />
-            </SelectTrigger>
-            <SelectContent className="bg-[#FFE6BF]">
-              <SelectItem value="connectre">
-                <Link href="/" target="_blank">
-                  Se connecter
-                </Link>
-              </SelectItem>
-              <SelectItem value="inscrire">
-                <Link href="/" target="_blank">
-                  S&apos;inscrire
-                </Link>
-              </SelectItem>
-            </SelectContent>
-          </Select>
+          <UserOptions />
           <Button variant={"outline"}>
             <PanelLeft className="h-8 w-8" />
           </Button>
-          <Button variant={"outline"} className="px-2" >
+          <Button variant={"outline"} className="px-2">
             <Switch
               id="airplane-mode"
               onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
@@ -55,3 +33,34 @@ export const Header: FC = () => {
     </header>
   );
 };
+
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+
+function UserOptions() {
+  return (
+    <DropdownMenu>
+      <DropdownMenuTrigger asChild>
+        <Button variant={"outline"}>
+          <User />
+        </Button>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent>
+        <DropdownMenuLabel className="font-normal">My Account</DropdownMenuLabel>
+        <DropdownMenuSeparator />
+        <DropdownMenuItem>
+          <Link href="/sign-in">Se connecter</Link>
+        </DropdownMenuItem>
+        <DropdownMenuItem>
+          <Link href="/sign-up">S&apos;inscrire</Link>
+        </DropdownMenuItem>
+      </DropdownMenuContent>
+    </DropdownMenu>
+  );
+}
