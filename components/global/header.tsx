@@ -12,7 +12,7 @@ export const Header: FC = () => {
   const { theme, setTheme } = useTheme();
 
   return (
-    <header className={`border-b-2 py-3 `}>
+    <header className={`border-b-2 py-3`}>
       <AppContainer className="flex justify-between items-center">
         <Link href="/" className="text-2xl uppercase">
           Tossé
