@@ -22,7 +22,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table"
-import { DashboardTitle } from "../dashboard/global/dashboard-title"
+import { DashboardTitle } from "../global/dashboard-title"
 
 const data: Payment[] = [
   {
