@@ -16,7 +16,7 @@ type HeaderProps = {
     isDarkMode?: boolean;
 };
 
-const Header: FC<HeaderProps> = ({ isDarkMode }) => {
+export const Header: FC<HeaderProps> = ({ isDarkMode }) => {
     const { theme, setTheme } = useTheme();
 
     return (
@@ -59,5 +59,3 @@ const Header: FC<HeaderProps> = ({ isDarkMode }) => {
         </header>
     );
 };
-
-export default Header;
