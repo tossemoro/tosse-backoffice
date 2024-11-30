@@ -1,5 +1,6 @@
 import { Metadata } from "next";
-import { Sidebar, Footer, Header } from "@/components/global";
+// import { Sidebar, Footer, Header } from "@/components/global";
+import { SidebarProviders } from "@/components/providers/sidebar.provider";
 
 export const metadata: Metadata = {
   title: "Dashboard",
@@ -13,10 +14,12 @@ export default function DashboardLayout({
 }) {
   return (
     <>
-      <Header />
-      <Sidebar />
-      {children}
-      <Footer />
+      <SidebarProviders>
+        {/* <Header />
+        <Sidebar /> */}
+        {children}
+        {/* <Footer /> */}
+      </SidebarProviders>
     </>
   );
 }
