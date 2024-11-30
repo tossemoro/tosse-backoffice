@@ -1,14 +1,13 @@
-import { ThemeProvider } from "next-themes";
 import type { Metadata } from "next";
 import "./globals.css";
-import { Poppins } from 'next/font/google'
-import { Sidebar, Footer, Header } from "@/components/global";
+import { Poppins } from "next/font/google";
+import { Providers } from "@/components/providers/app.provider";
 
 const poppins = Poppins({
-  weight: ["300" , "400" , "500" , "600"],
-  style: ['normal', 'italic'],
+  weight: ["300", "400", "500", "600"],
+  style: ["normal", "italic"],
   subsets: ["latin"],
-  display: 'swap',
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -22,20 +21,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body
-        className={`${poppins.className} antialiased`}
-      >
-        <ThemeProvider attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-            <Header />
-            <Sidebar />
-            {children}
-            <Footer />
-        </ThemeProvider>
+    <html lang="en" suppressHydrationWarning={true}>
+      <body className={`${poppins.className} antialiased`}>
+        <Providers>{children}</Providers>
       </body>
     </html>
   );
