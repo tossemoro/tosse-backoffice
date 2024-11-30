@@ -17,17 +17,17 @@ export const Header: FC = () => {
         <Link href="/" className="text-2xl uppercase">
           Tossé
         </Link>
-        <div className="flex items-center gap-2">
+        <div className="flex items-center justify-center gap-2">
           <UserOptions />
           <Button variant={"outline"}>
             <PanelLeft className="h-8 w-8" />
           </Button>
-          <Button variant={"outline"} className="px-2">
+          {/* <Button variant={"outline"} className="px-2"> */}
             <Switch
               id="airplane-mode"
               onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
             />
-          </Button>
+          {/* </Button> */}
         </div>
       </AppContainer>
     </header>
