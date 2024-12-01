@@ -1,4 +1,4 @@
-import { PanelLeft, User } from "lucide-react";
+import { User } from "lucide-react";
 import * as React from "react";
 import Link from "next/link";
 import { FC } from "react";
@@ -13,18 +13,19 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { ThemeButton } from "./theme-button";
+import { SidebarTrigger } from "../ui/sidebar";
 
 export const Header: FC = () => {
   return (
-    <header className="shadow-md">
+    <header className="border-b bg-sidebar">
       <AppContainer className="flex justify-between items-center gap-4 p-4">
         <Link href="/" className="text-2xl uppercase">
           Tossé
         </Link>
         <div className="flex items-center justify-center gap-2">
           <UserOptions />
-          <Button variant={"outline"}>
-            <PanelLeft className="h-8 w-8" />
+          <Button variant={"outline"} asChild>
+            <SidebarTrigger />
           </Button>
           <ThemeButton />
         </div>
@@ -37,7 +38,7 @@ function UserOptions() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant={"outline"}>
+        <Button variant={"outline"} size={'icon'}>
           <User />
         </Button>
       </DropdownMenuTrigger>
