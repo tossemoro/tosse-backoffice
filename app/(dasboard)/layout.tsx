@@ -15,10 +15,7 @@ export default function DashboardLayout({
   return (
     <>
       <SidebarProviders>
-        {/* <Header />
-        <Sidebar /> */}
         {children}
-        {/* <Footer /> */}
       </SidebarProviders>
     </>
   );
