@@ -1,6 +1,6 @@
-"use client"
+"use client";
 
-import * as React from "react"
+import * as React from "react";
 import {
   ColumnDef,
   SortingState,
@@ -12,8 +12,8 @@ import {
   getPaginationRowModel,
   getSortedRowModel,
   useReactTable,
-} from "@tanstack/react-table"
-import { Input } from "@/components/ui/input"
+} from "@tanstack/react-table";
+import { Input } from "@/components/ui/input";
 import {
   Table,
   TableBody,
@@ -21,8 +21,9 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@/components/ui/table"
-import { DashboardTitle } from "../../global/dashboard-title"
+} from "@/components/ui/table";
+import { DashboardTitle } from "../../global/dashboard-title";
+import { AppContainer } from "@/components/global";
 
 const data: Payment[] = [
   {
@@ -33,7 +34,7 @@ const data: Payment[] = [
     email: "hassan99@yahoo.com",
     objet: "Je n'ai pas reçu mon crédit",
     message: "Bonjour je ne pas recu mon crédit",
-    action: ""
+    action: "",
   },
   {
     id: "",
@@ -43,7 +44,7 @@ const data: Payment[] = [
     email: "Ali45@gmail.com",
     objet: "Je n'ai pas pu lancer la requête / paiement",
     message: "Comment ça marche ?",
-    action: ""
+    action: "",
   },
   {
     id: "",
@@ -53,7 +54,7 @@ const data: Payment[] = [
     email: "Mahamat44@gmail.com",
     objet: "Comment ça marche ?",
     message: "Bonsoir Tossé ",
-    action: ""
+    action: "",
   },
   {
     id: "",
@@ -63,7 +64,7 @@ const data: Payment[] = [
     email: "vincent@gmail.com",
     objet: "Comment ça marche ?",
     message: "Bonjour monsieur comment allez vous ?",
-    action: ""
+    action: "",
   },
   {
     id: "",
@@ -73,58 +74,69 @@ const data: Payment[] = [
     email: "moussa@hotmail.com",
     objet: "Comment ça marche ?",
     message: "Salut je voulais que vous m'aidez monsieur.",
-    action: ""
+    action: "",
   },
-]
+];
 export type Payment = {
-  id: string
-  nom: string
-  numéro_de_téléphone: number
-  date_et_heure: string | null
-  email: string
-  objet: string
-  message: string
-  action: string
-}
-
+  id: string;
+  nom: string;
+  numéro_de_téléphone: number;
+  date_et_heure: string | null;
+  email: string;
+  objet: string;
+  message: string;
+  action: string;
+};
 
 export const columns: ColumnDef<Payment>[] = [
   {
     header: "ID",
-    cell: ({ row }) => row.index + 1, 
+    cell: ({ row }) => row.index + 1,
   },
   {
     accessorKey: "nom",
     header: "Nom",
-    cell: ({ row }) => <div className="text-xl">{row.getValue("nom") || "N/A"}</div>,
+    cell: ({ row }) => (
+      <div>{row.getValue("nom") || "N/A"}</div>
+    ),
   },
   {
-    accessorKey: "numéro_de_téléphone", 
+    accessorKey: "numéro_de_téléphone",
     header: "Numéro de téléphone",
-    cell: ({ row }) => <div className="text-xl">{row.getValue("numéro_de_téléphone")}</div>,
+    cell: ({ row }) => (
+      <div>{row.getValue("numéro_de_téléphone")}</div>
+    ),
   },
   {
     accessorKey: "email",
     header: "Email",
-    cell: ({ row }) => <div className="lowercase text-xl">{row.getValue("email")}</div>,
+    cell: ({ row }) => (
+      <div>{row.getValue("email")}</div>
+    ),
   },
   {
     accessorKey: "objet",
     header: "Objet",
-    cell: ({ row }) => <div className=" text-xl">{row.getValue("objet") || "N/A"}</div>,
+    cell: ({ row }) => (
+      <div>{row.getValue("objet") || "N/A"}</div>
+    ),
   },
   {
     accessorKey: "message",
     header: "Message",
-    cell: ({ row }) => <div className=" text-xl">{row.getValue("message") || "N/A"}</div>,
+    cell: ({ row }) => (
+      <div>{row.getValue("message") || "N/A"}</div>
+    ),
   },
   {
-    accessorKey: "date_et_heure", 
+    accessorKey: "date_et_heure",
     header: "Date et heure",
-    cell: ({ row }) => <div className="text-xl">{row.getValue("date_et_heure")}</div>,
+    cell: ({ row }) => (
+      <div>{row.getValue("date_et_heure")}</div>
+    ),
   },
   {
-    accessorKey: "action", 
+    accessorKey: "action",
     header: "Action",
     cell: ({ row }) => (
       <button
@@ -134,9 +146,8 @@ export const columns: ColumnDef<Payment>[] = [
         Répondre
       </button>
     ),
-  }
-  
-]
+  },
+];
 
 function handleReply(payment: Payment) {
   // Action à exécuter lors du clic sur le bouton
@@ -145,11 +156,14 @@ function handleReply(payment: Payment) {
 }
 
 export function Messagerie() {
-  const [sorting, setSorting] = React.useState<SortingState>([])
+  const [sorting, setSorting] = React.useState<SortingState>([]);
   const [globalFilter, setGlobalFilter] = React.useState("");
-  const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>([])
-  const [columnVisibility, setColumnVisibility] = React.useState<VisibilityState>({})
-  const [rowSelection, setRowSelection] = React.useState({})
+  const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
+    []
+  );
+  const [columnVisibility, setColumnVisibility] =
+    React.useState<VisibilityState>({});
+  const [rowSelection, setRowSelection] = React.useState({});
 
   const table = useReactTable({
     data,
@@ -170,57 +184,67 @@ export function Messagerie() {
       columnVisibility,
       rowSelection,
     },
-  })
+  });
 
   return (
-    <div className="w-full">
-      <div className=" mx-10">
-        <div className="flex justify-between items-center w-full">
-          <DashboardTitle title="Messagerie" />
-          <Input
-            placeholder="Rechercher par email ou numéro de téléphone..."
-            value={globalFilter}
-            onChange={(event) => setGlobalFilter(event.target.value)} // Mettre à jour le filtre global
-            className="max-w-sm"
-          />
-        </div>
+    <AppContainer className="space-y-4">
+      <div className="flex flex-col md:flex-row justify-center md:justify-between items-start gap-3">
+        <DashboardTitle title="Messagerie" className="m-0" />
+        <Input
+          placeholder="Rechercher par email ou numéro de téléphone..."
+          value={globalFilter}
+          onChange={(event) => setGlobalFilter(event.target.value)} // Mettre à jour le filtre global
+          className="max-w-sm p-5"
+        />
       </div>
-      <div className="rounded-md border p-10 mx-10">
+      <div className="rounded-md border">
         <Table>
-          <TableHeader className="text-xl border-b-1">
+          <TableHeader className="text-sm border-b-1">
             {table.getHeaderGroups().map((headerGroup) => (
-              <TableRow key={headerGroup.id} className= "border-b-1">
+              <TableRow key={headerGroup.id} className="border-b-1">
                 {headerGroup.headers.map((header) => (
-                  <TableHead key={header.id}>
+                  <TableHead key={header.id} className="whitespace-nowrap max-w-fit overflow-ellipsis">
                     {header.isPlaceholder
                       ? null
-                      : flexRender(header.column.columnDef.header, header.getContext())}
+                      : flexRender(
+                          header.column.columnDef.header,
+                          header.getContext()
+                        )}
                   </TableHead>
                 ))}
               </TableRow>
             ))}
           </TableHeader>
-          <TableBody>
+          <TableBody className="text-sm bg-sidebar">
             {table.getRowModel().rows?.length ? (
               table.getRowModel().rows.map((row) => (
-                <TableRow key={row.id} data-state={row.getIsSelected() && "selected"} className="">
+                <TableRow
+                  key={row.id}
+                  data-state={row.getIsSelected() && "selected"}
+                >
                   {row.getVisibleCells().map((cell) => (
-                    <TableCell key={cell.id} className= "border-b-1">
-                      {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                    <TableCell key={cell.id} className="border-b-1 !text-sm">
+                      {flexRender(
+                        cell.column.columnDef.cell,
+                        cell.getContext()
+                      )}
                     </TableCell>
                   ))}
                 </TableRow>
               ))
             ) : (
               <TableRow>
-                <TableCell colSpan={columns.length} className="h-24 text-center">
-                Aucun résultat.
+                <TableCell
+                  colSpan={columns.length}
+                  className="h-24 text-center"
+                >
+                  Aucun résultat.
                 </TableCell>
               </TableRow>
             )}
           </TableBody>
         </Table>
       </div>
-    </div>
-  )
+    </AppContainer>
+  );
 }
