@@ -7,8 +7,8 @@ export const ThemeButton: FC = () => {
   const { theme, setTheme } = useTheme();
 
   return (
-    <>
-      <Switch onClick={() => setTheme(theme === "dark" ? "light" : "dark")} />
-    </>
+    <div className="border rounded py-1 px-0.5">
+      <Switch onClick={() => setTheme(theme === "dark" ? "light" : "dark")} className="flex items-center" />
+    </div>
   );
 };

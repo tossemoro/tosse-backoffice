@@ -48,10 +48,10 @@ const data: Payment[] = [
   },
   {
     id: "",
-    nom: "Mahamat dogo",
+    nom: "Maldoum Soya",
     numéro_de_téléphone: 88655222,
     date_et_heure: "12/10/2000 16:00",
-    email: "Mahamat44@gmail.com",
+    email: "maldoum@gmail.com",
     objet: "Comment ça marche ?",
     message: "Bonsoir Tossé ",
     action: "",
@@ -150,7 +150,6 @@ export const columns: ColumnDef<Payment>[] = [
 ];
 
 function handleReply(payment: Payment) {
-  // Action à exécuter lors du clic sur le bouton
   alert(`Répondre à : ${payment.nom} - Email : ${payment.email}`);
   // Vous pouvez également ouvrir un formulaire ou rediriger l'utilisateur
 }
