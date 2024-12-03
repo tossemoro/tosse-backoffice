@@ -35,12 +35,12 @@ const Header: FC<HeaderProps> = ({ isDarkMode }) => {
                         </SelectTrigger>
                         <SelectContent className="bg-[#FFE6BF]">
                             <SelectItem value="connectre">
-                                <Link href="/" target="_blank">
+                                <Link href="/signinform">
                                     Se connecter
                                 </Link>
                             </SelectItem>
                             <SelectItem value="inscrire">
-                                <Link href="/" target="_blank">
+                                <Link href="/signupform">
                                     S&apos;inscrire
                                 </Link>
                             </SelectItem>
