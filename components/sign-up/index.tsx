@@ -1,1 +1,1 @@
-export {SignUpForm as SignUpForm} from './signup-form'
+export {SignUpForm as SignUpForm} from './signupform'
