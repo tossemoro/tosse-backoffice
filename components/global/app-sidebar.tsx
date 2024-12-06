@@ -1,10 +1,9 @@
-import { BadgePoundSterling, Inbox, Plus, UserCogIcon } from "lucide-react";
+import { BadgePoundSterling, Inbox, UserCogIcon } from "lucide-react";
 
 import {
   Sidebar,
   SidebarContent,
   SidebarGroup,
-  SidebarGroupAction,
   SidebarGroupContent,
   SidebarGroupLabel,
   SidebarMenu,
