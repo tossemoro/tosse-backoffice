@@ -13,15 +13,15 @@ import {
 
 export function SignUpForm() {
     return (
-        <div className="max-auto">
-            <TypographyH4 className="bg-primary text-white">
+        <div className="m-auto space-y-4">
+            <TypographyH4 className="bg-primary text-white text-center p-2 rounded">
                 Inscription
             </TypographyH4>
-            <form className="pt-8 pb-5 space-y-4 w-[100%] border border-gray-400 bg-white rounded">
+            <form className="pt-8 pb-5 space-y-4 w-full border border-gray-400 bg-white rounded px-4">
                 <Input
                     placeholder="Nom"
                     type="text"
-                    id="email"
+                    id="nom"
                 />
                 <Input
                     placeholder="hassan@gmail.com"
