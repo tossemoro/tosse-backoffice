@@ -48,18 +48,6 @@ const data: Payment[] = [
   },
   {
     id: "",
-    nom: "Maldoum Soya",
-    nom: "Maldoum Soya",
-    numéro_de_téléphone: 88655222,
-    date_et_heure: "12/10/2000 16:00",
-    email: "maldoum@gmail.com",
-    email: "maldoum@gmail.com",
-    objet: "Comment ça marche ?",
-    message: "Bonsoir Tossé ",
-    action: "",
-  },
-  {
-    id: "",
     nom: "Vincent",
     numéro_de_téléphone: 77777777777,
     date_et_heure: "12/10/2000 17:00",
