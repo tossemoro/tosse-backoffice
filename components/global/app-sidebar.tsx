@@ -1,4 +1,4 @@
-import { BadgePoundSterling, Inbox, UserCogIcon } from "lucide-react";
+import { BadgePoundSterling, Inbox } from "lucide-react";
 
 import {
   Sidebar,
@@ -10,6 +10,7 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
+import { ProfileImage } from "../dashboard/profile";
 
 const items = [
   {
@@ -28,15 +29,22 @@ export function AppSidebar() {
   return (
     <Sidebar>
       <SidebarContent>
-        <SidebarGroup>
-          <SidebarGroupLabel>Admin</SidebarGroupLabel>
+        <SidebarGroup className="space-y-4">
+          <SidebarGroupLabel className="text-center"><span className="w-full uppercase">Administrator</span></SidebarGroupLabel>
+          <ProfileImage />
           <SidebarGroupContent>
-            <SidebarMenu>
+            <SidebarMenu className="space-y-2">
+              <SidebarMenuItem className="text-center">
+                <span>John Doe</span>
+              </SidebarMenuItem>
               <SidebarMenuItem>
-                <SidebarMenuButton asChild variant={'outline'}>
+                <SidebarMenuButton
+                  asChild
+                  variant={"outline"}
+                  className="text-center"
+                >
                   <a href={"/profile"}>
-                    <UserCogIcon />
-                    <span>Profile</span>
+                    <span className="text-center w-full">Votre Profile</span>
                   </a>
                 </SidebarMenuButton>
               </SidebarMenuItem>
