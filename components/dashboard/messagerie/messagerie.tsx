@@ -23,7 +23,7 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { DashboardTitle } from "../../global/dashboard-title";
-import { AppContainer } from "@/components/global";
+import { AppContainer, Spacer } from "@/components/global";
 
 const data: Payment[] = [
   {
@@ -177,6 +177,7 @@ export function Messagerie() {
 
   return (
     <AppContainer className="space-y-4">
+      <Spacer tooSmall />
       <div className="flex flex-col md:flex-row justify-center md:justify-between items-start gap-3">
         <DashboardTitle title="Messagerie" className="m-0" />
         <Input
@@ -234,6 +235,7 @@ export function Messagerie() {
           </TableBody>
         </Table>
       </div>
+      <Spacer />
     </AppContainer>
   );
 }
