@@ -28,53 +28,48 @@ import { AppContainer, Spacer } from "@/components/global";
 const data: Payment[] = [
   {
     id: "",
-    nom: "Hassan Mahamat",
-    numéro_de_téléphone: 686438664,
+    numero_emetteur: 686438664,
+    numero_recepteur: 686438664,
     date_et_heure: "12/10/2000 14:00",
     email: "hassan99@yahoo.com",
-    objet: "Je n'ai pas reçu mon crédit",
-    message: "Bonjour je ne pas recu mon crédit",
+    details: "Je n'ai pas reçu mon crédit",
     action: "",
   },
   {
     id: "",
-    nom: "Ali Oumar",
-    numéro_de_téléphone: 66468526,
+    numero_emetteur: 66468526,
+    numero_recepteur: 66468526,
     date_et_heure: "12/10/2000 15:00",
     email: "Ali45@gmail.com",
-    objet: "Je n'ai pas pu lancer la requête / paiement",
-    message: "Comment ça marche ?",
+    details: "Je n'ai pas pu lancer la requête / paiement",
     action: "",
   },
   {
     id: "",
-    nom: "Vincent",
-    numéro_de_téléphone: 77777777777,
+    numero_emetteur: 77777777777,
+    numero_recepteur: 77777777777,
     date_et_heure: "12/10/2000 17:00",
     email: "vincent@gmail.com",
-    objet: "Comment ça marche ?",
-    message: "Bonjour monsieur comment allez vous ?",
+    details: "Comment ça marche ?",
     action: "",
   },
   {
     id: "",
-    nom: "Moussa Ali",
-    numéro_de_téléphone: 888888888888,
+    numero_emetteur: 888888888888,
+    numero_recepteur: 888888888888,
     date_et_heure: "12/10/2000 18:00",
     email: "moussa@hotmail.com",
-    objet: "Comment ça marche ?",
-    message: "Salut je voulais que vous m'aidez monsieur.",
+    details: "Comment ça marche ?",
     action: "",
   },
 ];
 export type Payment = {
   id: string;
-  nom: string;
-  numéro_de_téléphone: number;
+  numero_emetteur: number;
+  numero_recepteur: number;
   date_et_heure: string | null;
   email: string;
-  objet: string;
-  message: string;
+  details: string;
   action: string;
 };
 
@@ -84,17 +79,17 @@ export const columns: ColumnDef<Payment>[] = [
     cell: ({ row }) => row.index + 1,
   },
   {
-    accessorKey: "nom",
-    header: "Nom",
+    accessorKey: "numero_emetteur",
+    header: "Numéro de l'emetteur",
     cell: ({ row }) => (
-      <div>{row.getValue("nom") || "N/A"}</div>
+      <div>{row.getValue("numero_emetteur")}</div>
     ),
   },
   {
-    accessorKey: "numéro_de_téléphone",
-    header: "Numéro de téléphone",
+    accessorKey: "numero_recepteur",
+    header: "Numéro du recepteur",
     cell: ({ row }) => (
-      <div>{row.getValue("numéro_de_téléphone")}</div>
+      <div>{row.getValue("numero_recepteur")}</div>
     ),
   },
   {
@@ -105,17 +100,10 @@ export const columns: ColumnDef<Payment>[] = [
     ),
   },
   {
-    accessorKey: "objet",
-    header: "Objet",
+    accessorKey: "details",
+    header: "Details",
     cell: ({ row }) => (
-      <div>{row.getValue("objet") || "N/A"}</div>
-    ),
-  },
-  {
-    accessorKey: "message",
-    header: "Message",
-    cell: ({ row }) => (
-      <div>{row.getValue("message") || "N/A"}</div>
+      <div>{row.getValue("details") || "N/A"}</div>
     ),
   },
   {
@@ -133,18 +121,18 @@ export const columns: ColumnDef<Payment>[] = [
         onClick={() => handleReply(row.original)}
         className="bg-[#FF9D00] px-4 py-2 rounded"
       >
-        Répondre
+        Supprimer
       </button>
     ),
   },
 ];
 
 function handleReply(payment: Payment) {
-  alert(`Répondre à : ${payment.nom} - Email : ${payment.email}`);
+  alert(`Répondre à : ${payment.numero_emetteur} - Email : ${payment.email}`);
   // Vous pouvez également ouvrir un formulaire ou rediriger l'utilisateur
 }
 
-export function Messagerie() {
+export function Transactions() {
   const [sorting, setSorting] = React.useState<SortingState>([]);
   const [globalFilter, setGlobalFilter] = React.useState("");
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
@@ -179,7 +167,7 @@ export function Messagerie() {
     <AppContainer className="space-y-4">
       <Spacer tooSmall />
       <div className="flex flex-col md:flex-row justify-center md:justify-between items-start gap-3">
-        <DashboardTitle title="Messagerie" className="m-0" />
+        <DashboardTitle title="Transactions" className="m-0" />
         <Input
           placeholder="Rechercher par email ou numéro de téléphone..."
           value={globalFilter}
