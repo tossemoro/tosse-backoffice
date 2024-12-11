@@ -10,7 +10,7 @@ export const SignInForm =  () => {
         </TypographyH4>
         <form className="pt-8 pb-5 space-y-4 w-full border border-gray-400 bg-white rounded px-4">
             <Input
-                placeholder="hassan@gmail.com"
+                placeholder="toosemoro@gmail.com"
                 type="email"
                 id="email"
             />
