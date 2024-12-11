@@ -28,13 +28,13 @@ export function SignUpForm() {
 
   return (
     <div className="m-auto space-y-4">
-      <TypographyH4 className="bg-primary text-white text-center p-2 rounded">
+      <TypographyH4 className="bg-primary text-white text-center p-2 rounded w-[90%] m-auto">
         Inscription
       </TypographyH4>
-      <form className="pt-8 pb-5 space-y-4 w-full border border-gray-400 bg-white rounded px-4">
-        <div className="w-[60%] ml-12">
+      <form className="pt-8 pb-5 space-y-4 w-full border border-gray-40 rounded px-4">
+        <div className="w-[50%] m-auto space-y-4">
           <User className="border border-red-50 rounded-[50%] w-full h-full" />
-          <input type="file" accept="image/*" onChange={handleFileChange} />
+          <input type="file" accept="image/*" onChange={handleFileChange} className="mr-12" />
           {preview && (
             <Image src={preview} alt="Aperçu" style={{ width: "100%" }} />
           )}
