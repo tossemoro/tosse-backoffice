@@ -12,7 +12,7 @@ export const ProfileImage = ({ imageUrl, className }: ProfileImageProps) => {
         width={500}
         src={imageUrl || "/user-profile.jpg"}
         alt="user image"
-        className="rounded-full w-full h-full object-cover"
+        className="rounded-full w-full h-full object-cover border"
       />
     </div>
   );
