@@ -12,8 +12,19 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@/components/ui/alert-dialog"
 import { Button } from "@/components/ui/button";
+
 const FormSchema = z.object({
   fullname: z.string().min(4, {
     message: "Full name must be at least 2 characters.",
@@ -108,8 +119,35 @@ export function ProfileForm() {
             </FormItem>
           )}
         />
-        <Button type="submit" variant={'secondary'} className="w-full">Enregistrer les modifiactons</Button>
+        <div className="grid grid-cols-2 gap-4">
+        <Button type="submit" variant={'secondary'} className="w-full">Modifier</Button>
+        <AlertDeleteProfile />
+        </div>
       </form>
     </Form>
   );
+}
+
+
+ 
+export function AlertDeleteProfile() {
+  return (
+    <AlertDialog>
+      <AlertDialogTrigger asChild>
+        <Button type="button" variant={'destructive'} className="w-full">Supprimer</Button>
+      </AlertDialogTrigger>
+      <AlertDialogContent>
+        <AlertDialogHeader>
+          <AlertDialogTitle>Êtes-vous absolument sûr ?</AlertDialogTitle>
+          <AlertDialogDescription>
+            Cette action ne peut pas être annulée. Cela supprimera définitivement votre compte et vos données de nos serveurs.
+          </AlertDialogDescription>
+        </AlertDialogHeader>
+        <AlertDialogFooter>
+          <AlertDialogCancel>Annuler</AlertDialogCancel>
+          <AlertDialogAction>Continuer</AlertDialogAction>
+        </AlertDialogFooter>
+      </AlertDialogContent>
+    </AlertDialog>
+  )
 }
