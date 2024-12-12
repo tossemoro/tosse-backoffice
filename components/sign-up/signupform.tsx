@@ -14,9 +14,11 @@ import {
 import { User } from "lucide-react";
 import { useState } from "react";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 export function SignUpForm() {
   const [preview, setPreview] = useState<string | null>(null);
+  const router = useRouter()
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
@@ -53,7 +55,7 @@ export function SignUpForm() {
             </SelectGroup>
           </SelectContent>
         </Select>
-        <Button type="submit">S&apos;inscrire</Button>
+        <Button type="submit" onClick={() => router.push('/profile') }>S&apos;inscrire</Button>
       </form>
     </div>
   );

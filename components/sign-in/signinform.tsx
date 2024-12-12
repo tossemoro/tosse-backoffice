@@ -1,8 +1,11 @@
+"use client"
+import { useRouter } from "next/navigation"
 import { Button } from "../ui/button"
 import { Input } from "../ui/input"
 import { TypographyH4 } from "../ui/typographies"
 
 export const SignInForm =  () => {
+    const router = useRouter()
     return(
         <div className="m-auto space-y-4">
         <TypographyH4 className="bg-primary text-white text-center p-2 rounded">
@@ -19,8 +22,7 @@ export const SignInForm =  () => {
                 type="password"
                 id="password"
             />
-           
-            <Button type="submit">S&apos;inscrire</Button>
+            <Button type="submit" onClick={() => router.push('/')}>S&apos;inscrire</Button>
         </form>
     </div>
     )
