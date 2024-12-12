@@ -14,15 +14,11 @@ import {
 import { User } from "lucide-react";
 import { useState } from "react";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 export function SignUpForm() {
   const [preview, setPreview] = useState<string | null>(null);
-  const [formData, setFormData] = useState({
-    nom: "",
-    email: "",
-    password: "",
-    role: "",
-  });
+  const router = useRouter()
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
@@ -32,81 +28,34 @@ export function SignUpForm() {
     }
   };
 
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
-    const { id, value } = event.target;
-    setFormData((prevData) => ({
-      ...prevData,
-      [id]: value,
-    }));
-  };
-
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault(); 
-    console.log("Données du formulaire :", formData);
-  };
-
   return (
     <div className="m-auto space-y-4">
       <TypographyH4 className="bg-primary text-white text-center p-2 rounded w-[90%] m-auto">
         Inscription
       </TypographyH4>
-      <form
-        className="pt-8 pb-5 space-y-4 w-full border border-gray-40 rounded px-4"
-        onSubmit={handleSubmit}
-      >
+      <form className="pt-8 pb-5 space-y-4 w-full border border-gray-40 rounded px-4">
         <div className="w-[50%] m-auto space-y-4">
-          {preview ? (
-            <div className="relative w-24 h-24 rounded-full overflow-hidden m-auto">
-              <Image
-                src={preview}
-                alt="Aperçu"
-                fill
-                style={{ objectFit: "cover" }}
-              />
-            </div>
-          ) : (
-            <User className="border border-gray-300 rounded-full w-24 h-24 p-2 m-auto" />
+          <User className="border border-red-50 rounded-[50%] w-full h-full" />
+          <input type="file" accept="image/*" onChange={handleFileChange} className="mr-12" />
+          {preview && (
+            <Image src={preview} alt="Aperçu" style={{ width: "100%" }} />
           )}
-          <input
-            type="file"
-            accept="image/*"
-            onChange={handleFileChange}
-            className="mr-20 text-[0.9rem]"
-          />
         </div>
-        <Input
-          placeholder="Nom"
-          type="text"
-          id="nom"
-          value={formData.nom}
-          onChange={handleChange}
-        />
-        <Input
-          placeholder="tossemoro@gmail.com"
-          type="email"
-          id="email"
-          value={formData.email}
-          onChange={handleChange}
-        />
-        <Input
-          placeholder="Mot de passe"
-          type="password"
-          id="password"
-          value={formData.password}
-          onChange={handleChange}
-        />
-        <Select onValueChange={(value) => setFormData((prev) => ({ ...prev, role: value }))}>
+        <Input placeholder="Nom" type="text" id="nom" />
+        <Input placeholder="tossemoro@gmail.com" type="email" id="email" />
+        <Input placeholder="Mot de passe" type="password" id="password" />
+        <Select>
           <SelectTrigger className="w-[180px]">
             <SelectValue placeholder="Administrateur" />
           </SelectTrigger>
           <SelectContent>
             <SelectGroup>
               <SelectItem value="administrateur">Administrateur</SelectItem>
-              <SelectItem value="stagiaire">Stagiaire</SelectItem>
+              <SelectItem value="stagaire">Stagiaire</SelectItem>
             </SelectGroup>
           </SelectContent>
         </Select>
-        <Button type="submit">S&apos;inscrire</Button>
+        <Button type="submit" onClick={() => router.push('/profile') }>S&apos;inscrire</Button>
       </form>
     </div>
   );
