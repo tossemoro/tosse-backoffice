@@ -41,7 +41,7 @@ export function SignUpForm() {
   };
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault(); 
+    event.preventDefault();
     console.log("Données du formulaire :", formData);
   };
 
@@ -96,7 +96,7 @@ export function SignUpForm() {
           onChange={handleChange}
         />
         <Select onValueChange={(value) => setFormData((prev) => ({ ...prev, role: value }))}>
-          <SelectTrigger className="w-[180px]">
+          <SelectTrigger  className="w-full">
             <SelectValue placeholder="Administrateur" />
           </SelectTrigger>
           <SelectContent>
@@ -106,7 +106,7 @@ export function SignUpForm() {
             </SelectGroup>
           </SelectContent>
         </Select>
-        <Button type="submit">S&apos;inscrire</Button>
+        <Button type="submit" className="w-full">S&apos;inscrire</Button>
       </form>
     </div>
   );
